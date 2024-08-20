@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Website - Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="login-form">
+        <h1>Login</h1>
+        <div class="container-login">
+            <div class="main">
+                <div class="content-login">
+                    <h2>Log In</h2>
+                    <form action="/v1/form?action=login" method="post">
+                        <input type="text" name="username" placeholder="User Name" required autofocus="">
+                        <input type="password" name="password" placeholder="User Password" required>
+                        <button class="btn-login" type="submit">
+                            Login
+                        </button>
+                    </form>
+                    <p class="p-login account">Don't Have An Account? <a class="a-login" href="signup.html">Register</a></p>
+                </div>
+                <div class="form-img-login">
+                    <img src="assets/login.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

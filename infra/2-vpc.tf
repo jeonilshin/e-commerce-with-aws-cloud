@@ -33,6 +33,12 @@ resource "aws_route" "host_public" {
   gateway_id = aws_internet_gateway.host.id
 }
 
+resource "aws_route" "host_to_app" {
+  route_table_id            = aws_route_table.host_public.id
+  destination_cidr_block    = aws_vpc.main.cidr_block
+  vpc_peering_connection_id = aws_vpc_peering_connection.main_to_host.id
+}
+
 resource "aws_subnet" "host_public_a" {
   vpc_id = aws_vpc.host.id
   cidr_block = "10.100.2.0/24"
@@ -60,7 +66,7 @@ resource "aws_route_table_association" "host_public_a" {
   route_table_id = aws_route_table.host_public.id
 }
 
-resource "aws_route_table_association" "hostpublic_b" {
+resource "aws_route_table_association" "host_public_b" {
   subnet_id = aws_subnet.public_b.id
   route_table_id = aws_route_table.host_public.id
 }

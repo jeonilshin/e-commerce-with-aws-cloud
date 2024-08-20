@@ -33,6 +33,12 @@ resource "aws_route" "public" {
   gateway_id = aws_internet_gateway.main.id
 }
 
+resource "aws_route" "app_to_host" {
+  route_table_id            = aws_route_table.public.id
+  destination_cidr_block    = aws_vpc.host.cidr_block
+  vpc_peering_connection_id = aws_vpc_peering_connection.main_to_host.id
+}
+
 resource "aws_subnet" "public_a" {
   vpc_id = aws_vpc.main.id
   cidr_block = "10.100.2.0/24"
@@ -119,10 +125,22 @@ resource "aws_route" "private_a" {
   nat_gateway_id = aws_nat_gateway.private_a.id
 }
 
+resource "aws_route" "app_a_private_to_host" {
+  route_table_id            = aws_route_table.private_a.id
+  destination_cidr_block    = aws_vpc.host.cidr_block
+  vpc_peering_connection_id = aws_vpc_peering_connection.main_to_host.id
+}
+
 resource "aws_route" "private_b" {
   route_table_id = aws_route_table.private_b.id
   destination_cidr_block = "0.0.0.0/0"
   nat_gateway_id = aws_nat_gateway.private_b.id
+}
+
+resource "aws_route" "app_b_private_to_host" {
+  route_table_id            = aws_route_table.private_b.id
+  destination_cidr_block    = aws_vpc.host.cidr_block
+  vpc_peering_connection_id = aws_vpc_peering_connection.main_to_host.id
 }
 
 resource "aws_subnet" "private_a" {
@@ -183,6 +201,18 @@ resource "aws_subnet" "data_b" {
   tags = {
     Name = "app-data-a"
   }
+}
+
+resource "aws_route" "data_a_to_host" {
+  route_table_id            = aws_route_table.data_a.id
+  destination_cidr_block    = aws_vpc.host.cidr_block
+  vpc_peering_connection_id = aws_vpc_peering_connection.main_to_host.id
+}
+
+resource "aws_route" "data_b_to_host" {
+  route_table_id            = aws_route_table.data_b.id
+  destination_cidr_block    = aws_vpc.host.cidr_block
+  vpc_peering_connection_id = aws_vpc_peering_connection.main_to_host.id
 }
 
 resource "aws_route_table_association" "data_a" {

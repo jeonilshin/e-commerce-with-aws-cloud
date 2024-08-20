@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Website - Register</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="login-form">
+        <h1>Register</h1>
+        <div class="container-login">
+            <div class="main">
+                <div class="content-login">
+                    <h2>Register</h2>
+                    <form id="registerForm" action="/v1/form?action=register" method="post">
+                        <input type="text" id="username" name="username" placeholder="User Name" required autofocus="">
+                        <input type="password" id="password" name="password" placeholder="Password" required>
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                        <button class="btn-login" type="submit">Register</button>
+                    </form>z</a></p>
+                    <p class="error-message" id="error-message" style="color:red;"></p>
+                </div>
+                <div class="form-img-login">
+                    <img src="assets/login.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const errorMessage = document.getElementById('error-message');
+
+            const passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+            if (password !== confirmPassword) {
+                errorMessage.textContent = "Passwords do not match!";
+                return;
+            }
+
+            if (!passwordPattern.test(password)) {
+                errorMessage.textContent = "Password must be at least 8 characters long, contain a number, and a special character.";
+                return;
+            }
+
+            this.submit();
+        });
+    </script>
+</body>
+</html>
