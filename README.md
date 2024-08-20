@@ -1,2 +1,2 @@
-# e-commerce-with-aws-cloud
-This is a project to run a simple e-commerce website using AWS cloud
+# E-Commerce Website using Cloud(AWS)
+### Diagram behind this project:
