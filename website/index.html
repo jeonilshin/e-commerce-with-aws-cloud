@@ -19,7 +19,7 @@
         <li class="link"><a href="index.html">HOME</a></li>
         <li class="link"><a href="shop.html">SHOP</a></li>
         <li class="link"><a href="https://github.com/jeonilshin" target="_blank">PROJECTS</a></li>
-        <li class="link"><a href="login.html">LOGIN</a></li>
+        <li class="link"><a id="login-link" href="login.html">USER1</a></li>
       </ul>
       <div class="nav__icons">
         <span><i class="ri-search-line"></i></span>
@@ -223,25 +223,46 @@
         Copyright © 2024 Jeon Il Shin. All rights reserved.
       </div>
     </div>
-      <!-- <script>
-        const token = localStorage.getItem('token');
 
-        if (!token) {
-            window.location.href = 'login.html';
-        } else {
-            fetch('/v1/protected', {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            }).then(response => {
-                if (!response.ok) {
-                    window.location.href = 'login.html';
-                }
-            }).catch(() => {
-                window.location.href = 'login.html';
-            });
-        }
-      </script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrsasign/10.5.16/jsrsasign-all-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrsasign/10.5.16/jsrsasign-all-min.js"></script>
+    <script>
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     const token = localStorage.getItem('token');
+
+        //     if (!token) {
+        //         window.location.href = 'login.html';
+        //         return;
+        //     }
+
+        //     let username = "USER1";
+
+        //     try {
+        //         const decodedToken = KJUR.jws.JWS.parse(token);
+        //         username = decodedToken.payloadObj.username || username;
+        //     } catch (error) {
+        //         console.error('Error decoding token:', error);
+        //         window.location.href = 'login.html';
+        //         return;
+        //     }
+
+        //     const loginLink = document.getElementById('login-link');
+        //     loginLink.textContent = username;
+        //     loginLink.href = '#';
+
+        //     fetch('/v1/protected', {
+        //         method: 'GET',
+        //         headers: {
+        //             'Authorization': `Bearer ${token}`
+        //         }
+        //     }).then(response => {
+        //         if (!response.ok) {
+        //             window.location.href = 'login.html';
+        //         }
+        //     }).catch(() => {
+        //         window.location.href = 'login.html';
+        //     });
+        // });
+    </script>
   </body>
 </html>
