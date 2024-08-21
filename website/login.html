@@ -10,23 +10,43 @@
     <div class="login-form">
         <h1>Login</h1>
         <div class="container-login">
-            <div class="main">
-                <div class="content-login">
-                    <h2>Log In</h2>
-                    <form action="/v1/form?action=login" method="post">
-                        <input type="text" name="username" placeholder="User Name" required autofocus="">
-                        <input type="password" name="password" placeholder="User Password" required>
-                        <button class="btn-login" type="submit">
-                            Login
-                        </button>
-                    </form>
-                    <p class="p-login account">Don't Have An Account? <a class="a-login" href="signup.html">Register</a></p>
-                </div>
-                <div class="form-img-login">
-                    <img src="assets/login.png" alt="">
-                </div>
-            </div>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Username" required />
+                <input type="password" id="password" placeholder="Password" required />
+                <button type="submit">
+                    <a class="button-text">Login</a>
+                </button>
+                <p class="p-login account">Don't Have An Account? <a class="a-login" href="signup.html">Register</a></p>
+            </form>
         </div>
     </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            fetch('/v1/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            }).then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Login failed');
+            }).then(data => {
+                localStorage.setItem('token', data.token);
+                window.location.href = 'index.html';
+            }).catch(error => {
+                console.error(error);
+                alert('Login failed!');
+            });
+        });
+    </script>
 </body>
 </html>

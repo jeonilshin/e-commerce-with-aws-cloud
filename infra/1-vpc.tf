@@ -203,14 +203,8 @@ resource "aws_subnet" "data_b" {
   }
 }
 
-resource "aws_route" "data_a_to_host" {
-  route_table_id            = aws_route_table.data_a.id
-  destination_cidr_block    = aws_vpc.host.cidr_block
-  vpc_peering_connection_id = aws_vpc_peering_connection.main_to_host.id
-}
-
-resource "aws_route" "data_b_to_host" {
-  route_table_id            = aws_route_table.data_b.id
+resource "aws_route" "data_to_host" {
+  route_table_id            = aws_route_table.data.id
   destination_cidr_block    = aws_vpc.host.cidr_block
   vpc_peering_connection_id = aws_vpc_peering_connection.main_to_host.id
 }

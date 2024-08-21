@@ -10,20 +10,16 @@
     <div class="login-form">
         <h1>Register</h1>
         <div class="container-login">
-            <div class="main">
-                <div class="content-login">
-                    <h2>Register</h2>
-                    <form id="registerForm" action="/v1/form?action=register" method="post">
-                        <input type="text" id="username" name="username" placeholder="User Name" required autofocus="">
-                        <input type="password" id="password" name="password" placeholder="Password" required>
-                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
-                        <button class="btn-login" type="submit">Register</button>
-                    </form>z</a></p>
+                <form id="registerForm">
+                    <input type="text" id="username" name="username" placeholder="User Name" required autofocus="">
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                    <button type="submit">
+                        <a class="button-text">Register</a>
+                    </button>
                     <p class="error-message" id="error-message" style="color:red;"></p>
-                </div>
-                <div class="form-img-login">
-                    <img src="assets/login.png" alt="">
-                </div>
+                    <p class="p-login account">Already Registered An Account? <a class="a-login" href="login.html">Login</a></p>
+                </form>
             </div>
         </div>
     </div>
@@ -31,10 +27,10 @@
         document.getElementById('registerForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
+            const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
             const errorMessage = document.getElementById('error-message');
-
             const passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
             if (password !== confirmPassword) {
                 errorMessage.textContent = "Passwords do not match!";
@@ -46,7 +42,27 @@
                 return;
             }
 
-            this.submit();
+            fetch('/v1/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = 'login.html';
+                } else {
+                    return response.text().then(text => { throw new Error(text) });
+                }
+            })
+            .catch(error => {
+                errorMessage.textContent = error.message || "An error occurred during registration.";
+            });
+            
         });
     </script>
 </body>

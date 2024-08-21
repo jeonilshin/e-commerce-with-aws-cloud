@@ -9,7 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <title>E-commerce Website - Cart </title>
+    <title>E-commerce Website - Cart</title>
   </head>
   <body>
     <div class="header__bar">Free Shipping on Orders Over $50</div>
@@ -17,38 +17,95 @@
       <a href="#" class="nav__logo">Shin's Shopping Ecommerce</a>
       <ul class="nav__links">
         <li class="link"><a href="index.html">HOME</a></li>
-        <li class="link"><a href="#">SHOP</a></li>
-        <li class="link"><a href="cart.html">CART</a></li>
-        <li class="link"><a href="#">LOGIN</a></li>
+        <li class="link"><a href="shop.html">SHOP</a></li>
+        <li class="link">
+          <a href="https://github.com/jeonilshin" target="_blank">PROJECTS</a>
+        </li>
+        <li class="link"><a href="login.html">LOGIN</a></li>
       </ul>
       <div class="nav__icons">
         <span><i class="ri-search-line"></i></span>
-        <span><i class="ri-shopping-bag-2-line"></i></span>
+        <span>
+          <a href="cart.html">
+            <i class="ri-shopping-bag-2-line"></i>
+          </a>
+        </span>
       </div>
     </nav>
     <hr />
     <div class="small-container cart-page">
-        <table>
+      <table>
+        <tr>
+          <th class="th-cart">Product</th>
+          <th class="th-cart">Quantity</th>
+          <th class="th-cart">Subtotal</th>
+        </tr>
+        <tr>
+          <td class="td-cart">
+            <div class="cart-info">
+              <img src="assets/musthave-1.png" />
+              <div>
+                <p class="cart-p">Basic long sleeve T-shirt</p>
+                <small>Price: $75.00</small>
+                <br />
+                <a href="">Remove</a>
+              </div>
+            </div>
+          </td>
+          <td class="td-cart"><input type="number" value="1" /></td>
+          <td class="td-cart">$75.00</td>
+        </tr>
+        <tr>
+          <td class="td-cart">
+            <div class="cart-info">
+              <img src="assets/musthave-2.png" />
+              <div>
+                <p class="cart-p">Ribbed T-shirt with buttons</p>
+                <small>Price: $75.00</small>
+                <br />
+                <a href="">Remove</a>
+              </div>
+            </div>
+          </td>
+          <td class="td-cart"><input type="number" value="1" /></td>
+          <td class="td-cart">$75.00</td>
+        </tr>
+        <tr>
+          <td class="td-cart">
+            <div class="cart-info">
+              <img src="assets/musthave-3.png" />
+              <div>
+                <p class="cart-p">Jacket withside strips</p>
+                <small>Price: $75.00</small>
+                <br />
+                <a href="">Remove</a>
+              </div>
+            </div>
+          </td>
+          <td class="td-cart"><input type="number" value="1" /></td>
+          <td class="td-cart">$75.00</td>
+        </tr>
+      </table>
+
+      <form action="/v1/order" method="POST">
+        <div class="total-price">
+          <table>
             <tr>
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>Subtotal</th>
+              <td>Subtotal</td>
+              <td>$225.00</td>
             </tr>
             <tr>
-                <td>
-                    <div class="cart-info">
-                        <img src="assets/musthave-1.png">
-                        <div>
-                            <p>Basic long sleeve T-shirt</p>
-                            <small>Price: $75.00</small>
-                            <a href="">Remove</a>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" value="1"></td>
-                <td>$75.00</td>
+              <td>Tax</td>
+              <td>$30.00</td>
             </tr>
-        </table>
+            <tr>
+              <td>Total</td>
+              <td>$255.00</td>
+            </tr>
+          </table>
+        </div>
+        <button type="submit" class="checkout-btn">Checkout</button>
+      </form>
     </div>
     <hr />
 

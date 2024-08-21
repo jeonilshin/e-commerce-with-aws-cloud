@@ -17,13 +17,17 @@
       <a href="#" class="nav__logo">Shin's Shopping Ecommerce</a>
       <ul class="nav__links">
         <li class="link"><a href="index.html">HOME</a></li>
-        <li class="link"><a href="#">SHOP</a></li>
-        <li class="link"><a href="cart.html">CART</a></li>
-        <li class="link"><a href="#">LOGIN</a></li>
+        <li class="link"><a href="shop.html">SHOP</a></li>
+        <li class="link"><a href="https://github.com/jeonilshin" target="_blank">PROJECTS</a></li>
+        <li class="link"><a href="login.html">LOGIN</a></li>
       </ul>
       <div class="nav__icons">
         <span><i class="ri-search-line"></i></span>
-        <span><i class="ri-shopping-bag-2-line"></i></span>
+        <span>
+          <a href="cart.html">
+            <i class="ri-shopping-bag-2-line"></i>
+          </a>
+        </span>
       </div>
     </nav>
 
@@ -32,7 +36,7 @@
         <div class="header__content">
           <p>EXTRA 55% OFF IN SPRING SALE</p>
           <h1>Discover & Shop<br />The Trend Here</h1>
-          <button class="btn">SHOP NOW</button>
+          <button class="btn" onclick="location.href='shop.html'">SHOP NOW</button>
         </div>
         <div class="header__image">
           <img src="assets/header.png" alt="header" />
@@ -40,13 +44,26 @@
       </div>
     </header>
 
+    <div class="header2">
+      <div class="section__container header__container">
+        <div class="header__content">
+          <p>EXTRA 60% OFF IN SPRING WOMAN CLOTHING SALE</p>
+          <h1>Woman's Clothing<br />Discover Here</h1>
+          <button class="btn" onclick="location.href='shop.html'">SHOP NOW</button>
+        </div>
+        <div class="header__image">
+          <img src="assets/header2.png" alt="header" />
+        </div>
+      </div>
+    </div>
+
     <section class="section__container collection__container">
       <img src="assets/collection.jpg" alt="collection" />
       <div class="collection__content">
         <h2 class="section__title">New Collection</h2>
         <p>#35 ITEMS</p>
         <h4>Available on Store</h4>
-        <button class="btn">SHOP NOW</button>
+        <button class="btn" onclick="location.href='shop.html'">SHOP NOW</button>
       </div>
     </section>
 
@@ -59,7 +76,7 @@
             <p class="sale__subtitle">MAN OUTERWEAR</p>
             <h4 class="sale__title">sale <span>40%</span> off</h4>
             <p class="sale__subtitle">- DON'T MISS -</p>
-            <button class="btn sale__btn">SHOP NOW</button>
+            <button class="btn sale__btn" onclick="location.href='shop.html'">SHOP NOW</button>
           </div>
         </div>
         <div class="sale__card">
@@ -68,7 +85,7 @@
             <p class="sale__subtitle">WOMAN T-SHIRT</p>
             <h4 class="sale__title">sale <span>25%</span> off</h4>
             <p class="sale__subtitle">- DON'T MISS -</p>
-            <button class="btn sale__btn">SHOP NOW</button>
+            <button class="btn sale__btn" onclick="location.href='shop.html'">SHOP NOW</button>
           </div>
         </div>
         <div class="sale__card">
@@ -77,81 +94,8 @@
             <p class="sale__subtitle">JACKETS</p>
             <h4 class="sale__title">sale <span>20%</span> off</h4>
             <p class="sale__subtitle">- DON'T MISS -</p>
-            <button class="btn sale__btn">SHOP NOW</button>
+            <button class="btn sale__btn" onclick="location.href='shop.html'">SHOP NOW</button>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section__container musthave__container">
-      <h2 class="section__title">Must Have</h2>
-      <div class="musthave__nav">
-        <a href="#">ALL</a>
-        <a href="#">MAN</a>
-        <a href="#">WOMEN</a>
-        <a href="#">BAG</a>
-        <a href="#">SHOES</a>
-      </div>
-      <div class="musthave__grid">
-        <div class="musthave__card" data-category="man">
-          <img src="assets/musthave-1.png" alt="must have" />
-          <h4>Basic long sleeve T-shirt</h4>
-          <p><del>$45.00</del> $75.00</p>
-        </div>
-        <div class="musthave__card" data-category="women">
-          <img src="assets/musthave-2.png" alt="must have" />
-          <h4>Ribbed T-shirt with buttons</h4>
-          <p><del>$45.00</del> $75.00</p>
-        </div>
-        <div class="musthave__card" data-category="women">
-          <img src="assets/musthave-3.png" alt="must have" />
-          <h4>Jacket withside strips</h4>
-          <p><del>$45.00</del> $75.00</p>
-        </div>
-        <div class="musthave__card" data-category="shoes">
-          <img src="assets/musthave-4.png" alt="must have" />
-          <h4>High-heel tubular sandals</h4>
-          <p><del>$45.00</del> $75.00</p>
-        </div>
-        <div class="musthave__card" data-category="bag">
-          <img src="assets/musthave-5.png" alt="must have" />
-          <h4>Coral fabric belt bag</h4>
-          <p><del>$45.00</del> $75.00</p>
-        </div>
-        <div class="musthave__card" data-category="man">
-          <img src="assets/musthave-6.png" alt="must have" />
-          <h4>Piggy skater slogan T-shirt</h4>
-          <p><del>$45.00</del> $75.00</p>
-        </div>
-        <div class="musthave__card" data-category="shoes">
-          <img src="assets/musthave-7.png" alt="must have" />
-          <h4>White platform boots</h4>
-          <p><del>$45.00</del> $75.00</p>
-        </div>
-        <div class="musthave__card" data-category="women">
-          <img src="assets/musthave-8.png" alt="must have" />
-          <h4>Sweater vest with sleeves</h4>
-          <p><del>$45.00</del> $75.00</p>
-        </div>
-        <div class="musthave__card">
-          <img src="assets/musthave-9.png" alt="must have" />
-          <h4>Slim fit pants</h4>
-          <p><del>$45.00</del> $75.00</p>
-        </div>
-        <div class="musthave__card" data-category="bag">
-          <img src="assets/musthave-10.png" alt="must have" />
-          <h4>Gray backpack</h4>
-          <p><del>$45.00</del> $75.00</p>
-        </div>
-        <div class="musthave__card" data-category="woman">
-          <img src="assets/musthave-11.png" alt="must have" />
-          <h4>Neon sweatshirt</h4>
-          <p><del>$45.00</del> $75.00</p>
-        </div>
-        <div class="musthave__card" data-category="male">
-          <img src="assets/musthave-12.png" alt="must have" />
-          <h4>Hooded nautical jacket</h4>
-          <p><del>$45.00</del> $75.00</p>
         </div>
       </div>
     </section>
@@ -247,9 +191,9 @@
       </div>
       <div class="footer__col">
         <h4 class="footer__heading">LINKS</h4>
-        <p>Home</p>
-        <p>Shop</p>
-        <p>Cart</p>
+        <a href="#"><p>Home</p></a>
+        <a href="shop.html"><p>Shop</p></a>
+        <a href="cart.html"><p>Cart</p></a>
       </div>
       <div class="footer__col">
         <h4 class="footer__heading">Comming Soon...</h4>
@@ -279,29 +223,25 @@
         Copyright © 2024 Jeon Il Shin. All rights reserved.
       </div>
     </div>
-    <script>
-        const filterLinks = document.querySelectorAll('.musthave__nav a');
-        const cards = document.querySelectorAll('.musthave__card');
-        filterLinks.forEach(link => {
-          link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const category = this.textContent.toLowerCase();
-            if (category === 'all') {
-              cards.forEach(card => card.style.display = 'block');
-            } else {
-              cards.forEach(card => {
-                const cardCategory = card.getAttribute('data-category');
-                if (cardCategory === category) {
-                  card.style.display = 'block';
-                } else {
-                  card.style.display = 'none';
+      <!-- <script>
+        const token = localStorage.getItem('token');
+
+        if (!token) {
+            window.location.href = 'login.html';
+        } else {
+            fetch('/v1/protected', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`
                 }
-              });
-            }
-            filterLinks.forEach(link => link.classList.remove('active'));
-            this.classList.add('active');
-          });
-        });
-      </script>      
+            }).then(response => {
+                if (!response.ok) {
+                    window.location.href = 'login.html';
+                }
+            }).catch(() => {
+                window.location.href = 'login.html';
+            });
+        }
+      </script> -->
   </body>
 </html>

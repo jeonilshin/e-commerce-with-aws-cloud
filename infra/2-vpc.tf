@@ -1,5 +1,5 @@
 resource "aws_vpc" "host" {
-  cidr_block = "10.100.0.0/16"
+  cidr_block = "10.10.0.0/16"
 
   enable_dns_hostnames = true
   enable_dns_support = true
@@ -41,7 +41,7 @@ resource "aws_route" "host_to_app" {
 
 resource "aws_subnet" "host_public_a" {
   vpc_id = aws_vpc.host.id
-  cidr_block = "10.100.2.0/24"
+  cidr_block = "10.10.1.0/24"
   availability_zone = "ap-northeast-2a"
   map_public_ip_on_launch = true
 
@@ -52,7 +52,7 @@ resource "aws_subnet" "host_public_a" {
 
 resource "aws_subnet" "host_public_b" {
   vpc_id = aws_vpc.host.id
-  cidr_block = "10.100.3.0/24"
+  cidr_block = "10.10.2.0/24"
   availability_zone = "ap-northeast-2b"
   map_public_ip_on_launch = true
 

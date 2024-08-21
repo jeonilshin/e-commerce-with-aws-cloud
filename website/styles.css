@@ -114,9 +114,17 @@ body {
   cursor: pointer;
 }
 
+.nav__icons a {
+  color: #000;
+}
+
 header {
   margin-top: 10rem;
   background-color: var(--primary-color);
+}
+
+.header2 {
+  background-color: #f1dafc4c;
 }
 
 .header__container {
@@ -313,6 +321,16 @@ header {
   background-color: var(--extra-light);
 }
 
+.musthave__a h4 {
+  margin-top: 10px;
+  color: black;
+}
+
+.musthave__a p {
+  margin-top: 5px;
+  color: black;
+}
+
 .news__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -470,6 +488,33 @@ header {
   color: var(--white);
 }
 
+.total-price {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.total-price table {
+  border-top: 3px solid #000000;
+  width: 100%;
+  max-width: 350px;
+}
+
+.total-price td {
+  padding: 10px 15px;
+}
+
+.total-price tr td:first-child {
+  padding-right: 30px; 
+}
+
+.total-price tr td:last-child {
+  padding-left: 30px; 
+}
+
+td:last-child {
+  text-align: right;
+}
+
 @media (width < 900px) {
   header {
     margin-top: 5rem;
@@ -506,6 +551,10 @@ header {
 
   .footer__form {
     justify-content: center;
+  }
+
+  .cart-info p {
+    display: none;
   }
 }
 
@@ -545,50 +594,120 @@ header {
   .footer__container {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .cart-info p {
+    display: none;
+  }
+}
+
+.small-container {
+  max-width: 1080px;
+  margin: auto;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 .cart-page {
-    margin: 80px auto;
+  margin: 80px auto;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .cart-info {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
+.cart-info img {
+  width: 70px;
+  height: 80px;
+  margin-right: 10px;
+}
 
-.login-form{
+.checkout-btn {
+  margin-top: 20px;
+  background-color: #000000; 
+  color: #ffffff; 
+  padding: 10px 20px; 
+  border: none; 
+  cursor: pointer; 
+  font-size: 16px; 
+  font-weight: 600; 
+  text-transform: uppercase;
+  width: 100%; 
+  display: inline-block; 
+  text-align: center; 
+  transition: background-color 0.3s ease; 
+}
+
+.checkout-btn:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border: 0.5px solid #000000;
+}
+
+.small {
+  margin: 10px;
+}
+
+.th-cart {
+  text-align: left;
+  padding: 5px;
+  color: #fff;
+  background: #000;
+  font-weight: normal;
+}
+
+.td-cart {
+  padding: 10px 5px;
+}
+
+.td-cart input {
+  width: 70px;
+  height: 30px;
+  padding: 5px;
+}
+
+.td-cart a {
+  color: #ff3b3b;
+  font-size: 12px;
+}
+
+.cart-p {
+  margin-bottom: 5px;
+}
+
+.login-form {
   position: relative;
   min-height: 100vh;
   z-index: 0;
-  background: #4e34b6;
+  background: #000000;
   padding: 30px;
   justify-content: center;
   display: grid;
-  font-family: 'poppins',sans-serif;
+  font-family: 'poppins', sans-serif;
 
   grid-template-rows: 1fr auto 1fr;
   align-items: center;
 }
-.container-login{
+
+.container-login {
   max-width: 800px;
   margin: 0 auto;
 }
 
-.login-form h1{
+.login-form h1 {
   text-align: center;
   font-size: 3.5rem;
   font-weight: bold;
   color: #fff;
-  font-family: 'poppins',sans-serif;
-
+  font-family: 'poppins', sans-serif;
 }
-.login-form h2{
+
+.login-form h2 {
   line-height: 40px;
   margin-bottom: 5px;
   font-size: 30px;
@@ -596,20 +715,23 @@ table {
   color: #272346;
   text-align: center;
 }
-.login-form .main{
+
+.login-form .main {
   position: relative;
   display: flex;
   margin: 30px 0;
 }
-.content-login{
+
+.content-login {
   flex-basis: 50%;
   padding: 3em 3em;
   background: #fff;
-  box-shadow: 2px 9px 49px -17px rgba(0,0,0,0.1);
+  box-shadow: 2px 9px 49px -17px rgba(0, 0, 0, 0.1);
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
 }
-.form-img-login{
+
+.form-img-login {
   flex-basis: 50%;
   background: #dfe5ea;
   background-size: cover;
@@ -619,41 +741,55 @@ table {
   align-items: center;
   display: grid;
 }
-.form-img-login img{
+
+.form-img-login img {
   max-width: 100%;
 }
-.p-login{
+
+.p-login {
   color: #666;
   font-size: 16px;
   line-height: 25px;
   opacity: 0.6;
   text-align: center;
 }
-.error-message{
+
+.error-message {
   font-size: 16px;
   line-height: 25px;
   margin-top: 12px;
   text-align: center;
 }
-.btn-login,button,input{
+
+.btn-login,
+.input-login {
   border-radius: 35px;
 }
+
 .btn-login:hover,
-button:hover{
-color: #272346;
+button:hover {
+  color: #272346;
   transition: 0.5s ease;
 }
-.a-login{
+
+.login-button button:hover {
+  background: #272346;
+  color: #fff;
+}
+
+.a-login {
   text-decoration: none;
 }
-.login-form form{
+
+.login-form form {
   margin: 30px 0;
 }
-.login-form input{
+
+.login-form input {
   outline: none;
   margin-bottom: 15px;
   font-stretch: 16px;
-  color: #999;
+  color: #ffffff;
   text-align: left;
   padding: 14px 20px;
   width: 100%;
@@ -663,47 +799,62 @@ color: #272346;
   background: #f7fafc;
   transition: 0.3s ease;
 }
-.login-form input:focus{
+
+.login-form input:focus,
+.login-form input:valid {
+  color: #ffffff;
   background: transparent;
-  border: 1px solid #4e34b6;
+  border: 1px solid #ffffff;
 }
 
-.login-form button{
+.login-form button {
   font-size: 18px;
   color: #fff;
   width: 100%;
-  background: #4e34b6;
+  background: #ffffff;
   border: none;
   padding: 14px 15px;
   font-weight: 600;
   transition: 0.3s ease;
 }
-.p-login.account a{
-  color: #4e34b6;
-}
-.p-login.account a:hover{
-text-decoration: underline;
+
+.button-text {
+  color: #000000;
 }
 
-@media(max-width:736px){
-  .login-form .main{
-      flex-direction: column;
-  }
-  .login-form form{
-      margin-top: 30px;
-      margin-bottom: 10px;
-  }
-  .form-img-login{
-      border-radius: 0;
-      border-bottom-left-radius: 8px;
-      border-bottom-right-radius: 8px;
-      order: 2;
-  }
-  .content-login{
-      order: 1;
-      border-radius: 0;
-      border-top-left-radius: 8px;
-      border-top-right-radius: 8px;
+.p-login {
+  margin-top: 20px;
+}
+
+.p-login.account a {
+  color: #ffffff;
+}
+
+.p-login.account a:hover {
+  text-decoration: underline;
+}
+
+@media(max-width:736px) {
+  .login-form .main {
+    flex-direction: column;
   }
 
+  .login-form form {
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+
+  .form-img-login {
+    border-radius: 0;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    order: 2;
+  }
+
+  .content-login {
+    order: 1;
+    border-radius: 0;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
 }
