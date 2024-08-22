@@ -18,7 +18,6 @@ import (
 type CartItem struct {
 	Name	 string `json:"name"`
 	Price	 string `json:"price`
-	Image	 string `json:"image"`
 	Quantity int	`json:"quantity`
 }
 
@@ -46,9 +45,8 @@ func init() {
 
 func main() {
 	http.HandleFunc("/v1/order", handleOrder)
-	port := 8080
-	log.Printf("Server starting on port %s...", port)
-	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
+	log.Printf("Server starting on port 8080...")
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":8080", port), nil))
 }
 
 func handleOrder(w http.ResponseWriter, r *http.Request) {
