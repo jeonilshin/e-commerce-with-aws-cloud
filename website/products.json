@@ -1,0 +1,86 @@
+[
+    {
+        "id": 1,
+        "name": "Basic long sleeve T-shirt",
+        "price": 75,
+        "image": "assets/musthave-1.png",
+        "description": "This is a basic long sleeve T-shirt made with 100% cotton and guaranteed skin care free shirt."
+    },
+    {
+        "id": 2,
+        "name": "Ribbed T-shirt with buttons",
+        "price": 75,
+        "image": "assets/musthave-2.png",
+        "description": "This is a basic T-shirt made with 100% cotton and guaranteed skin care free shirt."
+    },
+    {
+        "id": 3,
+        "name": "Jacket with side strips",
+        "price": 75,
+        "image": "assets/musthave-3.png",
+        "description": "This is a Jacket made with 100% leather and guaranteed skin care free shirt."
+    },
+    {
+        "id": 4,
+        "name": "High-heel tubular sandals",
+        "price": 75,
+        "image": "assets/musthave-4.png",
+        "description": "This is a basic high heel sandals."
+    },
+    {
+        "id": 5,
+        "name": "Coral fabric belt bag",
+        "price": 75,
+        "image": "assets/musthave-5.png",
+        "description": "This is a BTS merchadise bag."
+    },
+    {
+        "id": 6,
+        "name": "Piggy skater slogan T-shirt",
+        "price": 75,
+        "image": "assets/musthave-6.png",
+        "description": "This is a basic T-shirt made with 100% cotton and guaranteed skin care free shirt."
+    },
+    {
+        "id": 7,
+        "name": "White platform boots",
+        "price": 75,
+        "image": "assets/musthave-7.png",
+        "description": "This is a basic high heel boots that are very comfortable in your feet."
+    },
+    {
+        "id": 8,
+        "name": "Sweater vest with sleeves",
+        "price": 75,
+        "image": "assets/musthave-8.png",
+        "description": "This is pants made with 100% cotton and guaranteed skin care free shirt."
+    },
+    {
+        "id": 9,
+        "name": "Slim fit pants",
+        "price": 75,
+        "image": "assets/musthave-9.png",
+        "description": "This is pants made with 100% cotton and guaranteed skin care free shirt."
+    },
+    {
+        "id": 10,
+        "name": "Gray backpack",
+        "price": 75,
+        "image": "assets/musthave-10.png",
+        "description": "This is a bag perfect for school's and for camping."
+    },
+    {
+        "id": 11,
+        "name": "Neon sweatshirt",
+        "price": 75,
+        "image": "assets/musthave-11.png",
+        "description": "This is a basic long sleeve sweatshirt made with 100% cotton and guaranteed skin care free shirt."
+    },
+    {
+        "id": 12,
+        "name": "Hooded nautical jacket",
+        "price": 75,
+        "image": "assets/musthave-12.png",
+        "description": "This is a jacket that is warm and comfortable."
+    }
+]

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>E-commerce Website</title>
+  </head>
+  <body>
+    <div class="header__bar">Free Shipping on Orders Over $50</div>
+    <nav class="section__container nav__container">
+      <a href="#" class="nav__logo">Shin's Shopping Ecommerce</a>
+      <ul class="nav__links">
+        <li class="link"><a href="index.html">HOME</a></li>
+        <li class="link"><a href="shop.html">SHOP</a></li>
+        <li class="link">
+          <a href="https://github.com/jeonilshin" target="_blank">PROJECTS</a>
+        </li>
+        <li class="link"><a id="login-link" href="login.html">USER1</a></li>
+      </ul>
+      <div class="nav__icons">
+        <span class="icon-wrapper">
+          <a href="cart.html">
+            <i class="ri-shopping-bag-2-line"></i>
+            <span class="cart-number" style="font-size: 13px;">0</span>
+            </a>
+        </span>
+      </div>
+    </nav>
+
+    <hr />
+    <section class="section__container musthave__container">
+        <h2 class="section__title">Product Details</h2>
+        <div class="details">
+            <div class="image">
+                <img src="" alt="Product Image">
+            </div>
+            <div class="content">
+                <h1 class="name"></h1>
+                <div class="price"></div>
+                <div class="buttons">
+                    <button id="checkout-button">Check Out</button>
+                    <button>
+                        Add To Cart
+                        <span>
+                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
+                            </svg>  
+                        </span>
+                    </button>
+                </div>
+                <div class="desc">Description</div>
+                <div class="description"></div>
+            </div>
+        </div>
+    </section>
+    <hr />
+
+    <footer class="section__container footer__container">
+      <div class="footer__col">
+        <h4 class="footer__heading">CONTACT INFO</h4>
+        <p>
+          <i class="ri-map-pin-2-fill"></i> Somewhere in South Korea
+        </p>
+        <p><i class="ri-mail-fill"></i> jeonilshinbusiness@gmail.com</p>
+        <p><i class="ri-phone-fill"></i> (+012) 3456 789 (Secret..)</p>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__heading">LINKS</h4>
+        <a href="index.html"><p>Home</p></a>
+        <a href="shop.html"><p>Shop</p></a>
+        <a href="cart.html"><p>Cart</p></a>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__heading">Coming Soon...</h4>
+        <p>Help</p>
+        <p>Track My Order</p>
+        <p>Men</p>
+        <p>Women</p>
+        <p>Shoes</p>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__heading">INSTAGRAM</h4>
+        <div class="instagram__grid">
+          <img src="assets/instagram-1.jpg" alt="instagram" />
+          <img src="assets/instagram-2.jpg" alt="instagram" />
+          <img src="assets/instagram-3.jpg" alt="instagram" />
+          <img src="assets/instagram-4.jpg" alt="instagram" />
+          <img src="assets/instagram-5.jpg" alt="instagram" />
+          <img src="assets/instagram-6.jpg" alt="instagram" />
+        </div>
+      </div>
+    </footer>
+
+    <hr />
+
+    <div class="section__container footer__bar">
+      <div class="copyright">
+        Copyright © 2024 Jeon Il Shin. All rights reserved.
+      </div>
+    </div>
+    <script>
+        let products = null;
+        fetch('products.json')
+        .then(response => response.json())
+        .then(data => {
+            products = data;
+            showDetail();
+            updateCartNumber();
+        })
+        .catch(error => {
+            console.error('Error fetching products:', error);
+            window.location.href = '/website/';
+        });
+
+        function showDetail() {
+            let detail = document.querySelector('.details');
+            let productId = new URLSearchParams(window.location.search).get('id');
+            let thisProduct = products.find(value => value.id == productId);
+            
+            if (!thisProduct) {
+                window.location.href = "/website/";
+                return;
+            }
+
+            detail.querySelector('.image img').src = thisProduct.image;
+            detail.querySelector('.name').innerText = thisProduct.name;
+            detail.querySelector('.price').innerText = '$' + thisProduct.price;
+            detail.querySelector('.description').innerText = thisProduct.description;
+
+            document.getElementById('checkout-button').addEventListener('click', function() {
+            window.location.href = '/v1/order';
+        });
+
+        const addToCartButton = document.querySelector('.buttons button:nth-child(2)');
+            addToCartButton.addEventListener('click', function() {
+                const product = {
+                    name: thisProduct.name,
+                    price: thisProduct.price,
+                    image: thisProduct.image,
+                    quantity: 1
+                };
+
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                const existingProduct = cart.find(item => item.name === product.name);
+                if (existingProduct) {
+                    existingProduct.quantity += 1;
+                } else {
+                    cart.push(product);
+                }
+
+                localStorage.setItem('cart', JSON.stringify(cart));
+                alert(`${product.name} has been added to your cart!`);
+
+                updateCartNumber();
+            });
+        }
+
+        function updateCartNumber() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            const cartNumberElement = document.querySelector('.cart-number');
+            cartNumberElement.textContent = totalItems;
+        }
+    </script>
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const token = localStorage.getItem('token');
+
+            if (!token) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            let username = "USER1";
+
+            try {
+                const decodedToken = KJUR.jws.JWS.parse(token);
+                username = decodedToken.payloadObj.username || username;
+            } catch (error) {
+                console.error('Error decoding token:', error);
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const loginLink = document.querySelector('ul.nav__links li a[href="login.html"]');
+            if (loginLink) {
+                loginLink.textContent = username;
+                loginLink.href = '#';
+            }
+
+            fetch('/v1/protected', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            }).then(response => {
+                if (!response.ok) {
+                    window.location.href = 'login.html';
+                }
+            }).catch(() => {
+                window.location.href = 'login.html';
+            });
+        });
+    </script> -->
+  </body>
+</html>

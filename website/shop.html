@@ -24,11 +24,17 @@
         <li class="link"><a id="login-link" href="login.html">USER1</a></li>
       </ul>
       <div class="nav__icons">
-        <span><i class="ri-search-line"></i></span>
-        <span>
+        <div class="box">
+          <input type="text" id="search-input" placeholder="Search...">
+          <a href="#">
+            <i class="ri ri-search-line"></i>
+          </a> 
+        </div>
+        <span class="icon-wrapper">
           <a href="cart.html">
             <i class="ri-shopping-bag-2-line"></i>
-          </a>
+            <span class="cart-number" style="font-size: 13px;">0</span>
+            </a>
         </span>
       </div>
     </nav>
@@ -45,6 +51,7 @@
       <div class="musthave__grid">
         <div
           class="musthave__card"
+          data-id="1"
           data-category="man"
           data-name="Basic long sleeve T-shirt"
           data-price="75.00"
@@ -56,6 +63,7 @@
         </div>
         <div
           class="musthave__card"
+          data-id="2"
           data-category="women"
           data-name="Ribbed T-shirt with buttons"
           data-price="75.00"
@@ -67,17 +75,19 @@
         </div>
         <div
           class="musthave__card"
+          data-id="3"
           data-category="women"
-          data-name="Jacket withside strips"
+          data-name="Jacket with side strips"
           data-price="75.00"
           data-image="assets/musthave-3.png"
         >
           <img src="assets/musthave-3.png" alt="must have" />
-          <h4>Jacket withside strips</h4>
+          <h4>Jacket with side strips</h4>
           <p><del>$45.00</del> $75.00</p>
         </div>
         <div
           class="musthave__card"
+          data-id="4"
           data-category="shoes"
           data-name="High-heel tubular sandals"
           data-price="75.00"
@@ -89,6 +99,7 @@
         </div>
         <div
           class="musthave__card"
+          data-id="5"
           data-category="bag"
           data-name="Coral fabric belt bag"
           data-price="75.00"
@@ -100,6 +111,7 @@
         </div>
         <div
           class="musthave__card"
+          data-id="6"
           data-category="man"
           data-name="Piggy skater slogan T-shirt"
           data-price="75.00"
@@ -111,6 +123,7 @@
         </div>
         <div
           class="musthave__card"
+          data-id="7"
           data-category="shoes"
           data-name="White platform boots"
           data-price="75.00"
@@ -122,6 +135,7 @@
         </div>
         <div
           class="musthave__card"
+          data-id="8"
           data-category="women"
           data-name="Sweater vest with sleeves"
           data-price="75.00"
@@ -133,6 +147,7 @@
         </div>
         <div
           class="musthave__card"
+          data-id="9"
           data-name="Slim fit pants"
           data-price="75.00"
           data-image="assets/musthave-9.png"
@@ -143,6 +158,7 @@
         </div>
         <div
           class="musthave__card"
+          data-id="10"
           data-category="bag"
           data-name="Gray backpack"
           data-price="75.00"
@@ -154,6 +170,7 @@
         </div>
         <div
           class="musthave__card"
+          data-id="11"
           data-category="women"
           data-name="Neon sweatshirt"
           data-price="75.00"
@@ -165,6 +182,7 @@
         </div>
         <div
           class="musthave__card"
+          data-id="12"
           data-category="man"
           data-name="Hooded nautical jacket"
           data-price="75.00"
@@ -195,7 +213,7 @@
         <a href="cart.html"><p>Cart</p></a>
       </div>
       <div class="footer__col">
-        <h4 class="footer__heading">Comming Soon...</h4>
+        <h4 class="footer__heading">Coming Soon...</h4>
         <p>Help</p>
         <p>Track My Order</p>
         <p>Men</p>
@@ -223,30 +241,29 @@
       </div>
     </div>
     <script>
-      const cards = document.querySelectorAll('.musthave__card');
+        const cards = document.querySelectorAll('.musthave__card');
+        const searchInput = document.getElementById('search-input');
 
-      cards.forEach(card => {
-        card.addEventListener('click', function () {
-          const product = {
-            name: this.getAttribute('data-name'),
-            price: this.getAttribute('data-price'),
-            image: this.getAttribute('data-image'),
-            quantity: 1
-          };
+        searchInput.addEventListener('input', function() {
+          const searchTerm = searchInput.value.toLowerCase();
 
-          let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-          const existingProduct = cart.find(item => item.name === product.name);
-          if (existingProduct) {
-            existingProduct.quantity += 1;
-          } else {
-            cart.push(product);
-          }
-
-          localStorage.setItem('cart', JSON.stringify(cart));
-          alert(`${product.name} has been added to your cart!`);
+          cards.forEach(card => {
+            const productName = card.getAttribute('data-name').toLowerCase();
+            
+            if (productName.includes(searchTerm)) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
         });
-      });
+
+        cards.forEach(card => {
+          card.addEventListener('click', function () {
+            const productId = this.getAttribute('data-id');
+            window.location.href = `buy.html?id=${productId}`;
+          });
+        });
     </script>
     <script>
         const filterLinks = document.querySelectorAll('.musthave__nav a');
@@ -270,6 +287,15 @@
             this.classList.add('active');
           });
         });
+    </script>
+    <script>
+      function updateCartNumber() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+        const cartNumberElement = document.querySelector('.cart-number');
+        cartNumberElement.textContent = totalItems;
+      }
+      document.addEventListener('DOMContentLoaded', updateCartNumber);
     </script>
     <!-- <script>
         document.addEventListener('DOMContentLoaded', function () {

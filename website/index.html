@@ -22,11 +22,11 @@
         <li class="link"><a id="login-link" href="login.html">USER1</a></li>
       </ul>
       <div class="nav__icons">
-        <span><i class="ri-search-line"></i></span>
-        <span>
+        <span class="icon-wrapper">
           <a href="cart.html">
             <i class="ri-shopping-bag-2-line"></i>
-          </a>
+            <span class="cart-number" style="font-size: 13px;">0</span>
+            </a>
         </span>
       </div>
     </nav>
@@ -226,6 +226,15 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrsasign/10.5.16/jsrsasign-all-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrsasign/10.5.16/jsrsasign-all-min.js"></script>
+    <script>
+      function updateCartNumber() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+        const cartNumberElement = document.querySelector('.cart-number');
+        cartNumberElement.textContent = totalItems;
+      }
+      document.addEventListener('DOMContentLoaded', updateCartNumber);
+    </script>
     <script>
         // document.addEventListener('DOMContentLoaded', function () {
         //     const token = localStorage.getItem('token');
