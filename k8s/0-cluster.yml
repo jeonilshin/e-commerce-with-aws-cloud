@@ -1,0 +1,70 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: app-eks-cluster
+  region: ap-northeast-2
+  version: "1.29"
+
+cloudWatch:
+  clusterLogging:
+    enableTypes: ["*"]
+
+iam:
+  withOIDC: true
+
+vpc:
+  id: 
+  securityGroup: 
+  subnets:
+    private:
+      ap-northeast-2a-priv: { id:  }
+      ap-northeast-2b-priv: { id:  }
+  clusterEndpoints:
+    publicAccess: false
+    privateAccess: true
+
+managedNodeGroups:
+  - name: app-nodegroup
+    instanceName: app-node
+    labels: { node: app }
+    tags: { node: app }
+    instanceType: c5.large
+    minSize: 2
+    maxSize: 20
+    desiredCapacity: 2
+    privateNetworking: true
+    subnets:
+     - ap-northeast-2a-priv
+     - ap-northeast-2b-priv
+    iam:
+      withAddonPolicies:
+        imageBuilder: true
+        autoScaler: true
+        awsLoadBalancerController: true
+        cloudWatch: true
+
+  - name: addon-nodegroup
+    instanceName: addon-node
+    labels: { node: addon }
+    tags: { node: addon }
+    instanceType: t3.small
+    minSize: 2
+    maxSize: 20
+    desiredCapacity: 2
+    privateNetworking: true
+    subnets:
+     - ap-northeast-2a-priv
+     - ap-northeast-2b-priv
+    iam:
+      withAddonPolicies:
+        imageBuilder: true
+        autoScaler: true
+        awsLoadBalancerController: true
+        cloudWatch: true
+
+fargateProfiles:
+  - name: app-fargate
+    selectors:
+      - namespace: app
+        labels:
+          app: order

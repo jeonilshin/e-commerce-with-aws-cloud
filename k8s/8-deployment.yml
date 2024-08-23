@@ -1,0 +1,138 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer
+  namespace: app
+  labels:
+    app: customer
+    type: app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: customer 
+      type: app    
+  template:
+    metadata:
+      labels:
+        app: customer
+        type: app
+    spec:
+      nodeSelector:
+        node: app 
+      priorityClassName: app-priority
+      serviceAccountName: app-sa
+      containers:
+        - name: customer
+          image: <ECR 이미지>
+          ports:
+          - containerPort: 8080
+          env: 
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: MYSQL_USER
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: MYSQL_PASSWORD
+            - name: MYSQL_HOST
+              value: '<RDS ENDPOINT>'
+            - name: MYSQL_PORT
+              value: '3307'
+            - name: MYSQL_DBNAME
+              value: ecommerce_db
+          resources:
+            requests:
+              memory: "250Mi"
+              cpu: "500m"
+            limits:
+              memory: "250Mi"
+              cpu: "500m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: form
+  namespace: wsi
+  labels:
+    app: form
+    type: app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: form 
+      type: app    
+  template:
+    metadata:
+      labels:
+        app: form
+        type: app
+    spec:
+      nodeSelector:
+        node: app 
+      priorityClassName: app-priority
+      serviceAccountName: app-sa
+      containers:
+        - name: form
+          image: <ECR 이미지>
+          ports:
+          - containerPort: 8080
+          env: 
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: MYSQL_USER
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: MYSQL_PASSWORD
+            - name: MYSQL_HOST
+              value: '<RDS ENDPOINT>'
+            - name: MYSQL_PORT
+              value: '3307'
+            - name: MYSQL_DBNAME
+              value: ecommerce_db
+          resources:
+            requests:
+              memory: "250Mi"
+              cpu: "500m"
+            limits:
+              memory: "250Mi"
+              cpu: "500m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order
+  namespace: app
+  labels:
+    app: order
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: order     
+  template:
+    metadata:
+      labels:
+        app: order
+    spec:
+      serviceAccountName: app-sa
+      containers:
+        - name: order
+          image: <ECR 이미지>
+          ports:
+          - containerPort: 8080
+          resources:
+            requests:
+              memory: "250Mi"
+              cpu: "500m"
+            limits:
+              memory: "250Mi"
+              cpu: "500m"
